@@ -1,0 +1,13 @@
+'use strict';
+
+import { window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextDocumentSaveReason } from 'vscode';
+import * as inserter from './TextInserter';
+
+export function activate(context: ExtensionContext) {
+    let insertTag = commands.registerCommand('l7ssha.insertTag', inserter.insertTag);
+
+    context.subscriptions.push(insertTag);
+}
+
+export function deactivate() {
+}
