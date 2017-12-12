@@ -9,11 +9,11 @@ export async function insertTag() {
 
     if(!selection.isEmpty) {
         vscode.window.activeTextEditor.edit(builder => {
-            builder.replace(selection, getIsertText(selection, tag));
+            builder.replace(selection, getInsertText(selection, tag));
         });
     }
 };
 
-function getIsertText(selection: vscode.Selection, tag: string) {
+function getInsertText(selection: vscode.Selection, tag: string) {
     return "<" + tag +">" + vscode.window.activeTextEditor.document.getText(selection) + "</" + tag + ">"
 }
