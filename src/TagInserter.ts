@@ -15,5 +15,11 @@ export async function insertTag() {
 };
 
 export function getInsertText(selection: string, tag: string) {
-    return "<" + tag +">" + selection + "</" + tag + ">"
+    if(tag.includes("=\"") == true)
+    {
+        const t = tag.split(" ", 1);
+        return "<" + tag +">" + selection + "</" + t[0] + ">";
+    }
+    else
+        return "<" + tag +">" + selection + "</" + tag + ">";
 }
