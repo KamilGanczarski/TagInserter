@@ -15,8 +15,13 @@ import * as inserter from '../tagInserter';
 suite("Extension Tests", () => {
 
     // Defines a Mocha unit test
-    test("Inserting Works", () => {
+    test("Simple Insertion", () => {
         let mockData = "<div>TEST</div>";
         assert.equal(mockData, inserter.getInsertText("TEST", "div"));
+    });
+
+    test("Inserting with classes", () => {
+        let mockData = "<div class=\"container\">TEST</div>";
+        assert.equal(mockData, inserter.getInsertText("TEST", "div class=\"container\""));
     });
 });
