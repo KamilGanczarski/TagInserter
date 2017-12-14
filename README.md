@@ -4,3 +4,4 @@
 
 ## Usage
 F1 -> insertTag -> Give it tag to place. That's it :D
+![Presentation](docs/presentation.gif)
