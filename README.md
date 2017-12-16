@@ -1,7 +1,5 @@
 # Tag Inserter
-### Easy insert HTML tag within text.
-** Work in progress ** 
-
 ## Usage
-F1 -> insertTag -> Give it tag to place. That's it :D
+Select text -> F1 -> insertTag -> Give it a tag to insert -> Enter
+
 ![Presentation](docs/presentation.gif)
