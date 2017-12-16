@@ -24,4 +24,9 @@ suite("Extension Tests", () => {
         let mockData = "<div class=\"container\">TEST</div>";
         assert.equal(mockData, inserter.getInsertText("TEST", "div class=\"container\""));
     });
+
+    test("Inserting blank should fail", () => {
+        let mockData = "<div class=\"container\">TEST</div>";
+        assert.notEqual(mockData, inserter.getInsertText("TEST", ""))
+    });
 });
