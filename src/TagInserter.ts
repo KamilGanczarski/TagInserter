@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 export async function insertTag() {
     const tag = await vscode.window.showInputBox();
-    if(tag == null)
+    if(tag == null && tag.trim() != "")
         return;
 
     let selection = vscode.window.activeTextEditor.selection;
