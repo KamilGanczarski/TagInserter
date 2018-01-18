@@ -1,6 +1,6 @@
-out
-node_modules
+out/
+node_modules/
 .vscode-test/
-.vsix
+*.vsix
 package-lock.json
-.vscodeignore
+*.vscodeignore
