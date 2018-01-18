@@ -1,3 +1,4 @@
+//Szymon Uglis, Kamil Ganczarski -plik
 'use strict';
 
 import { window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextDocumentSaveReason } from 'vscode';
