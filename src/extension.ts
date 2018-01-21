@@ -1,4 +1,5 @@
-//Szymon Uglis, Kamil Ganczarski -plik
+// Tag-inserter/extension.ts
+// Author: Szymon 'l7ssha' Uglis
 'use strict';
 
 import { window, commands, Disposable, ExtensionContext, StatusBarAlignment, StatusBarItem, TextDocument, TextDocumentSaveReason } from 'vscode';
