@@ -3,29 +3,43 @@
 import * as vscode from 'vscode';
 
 export async function insertTag() {
+    const document_lang = vscode.window.activeTextEditor.document.languageId;
+    if (document_lang  != "html")
+    {
+        vscode.window.showErrorMessage("The file must be html file.");
+        return;
+    }
+
     const tag = await vscode.window.showInputBox();
     if(tag == null && tag.trim() != "")
         return;
 
     let selection = vscode.window.activeTextEditor.selection;
-    const document_lang = vscode.window.activeTextEditor.document.languageId;
 
-    if(!selection.isEmpty && (document_lang  == "html" || document_lang == "xml")) {
+    if(!selection.isEmpty) {
         vscode.window.activeTextEditor.edit(builder => {
             builder.replace(selection, getInsertText(vscode.window.activeTextEditor.document.getText(selection), tag));
         });
     }
-    else
-        vscode.window.showErrorMessage("Your selection is empty or you're trying to run command in non html file.");
 };
 
-// Need more secure here. We can easily crack this.
+// Some regex stuff.
 export function getInsertText(selection: string, tag: string) {
-    if(tag.includes("=\"") == true)
+    const regexPattern = /(\w+).([A-Za-z])\w+=\"([^"]*)\"/;
+
+    if(regexPattern.test(tag))
     {
         const t = tag.split(" ", 1);
         return "<" + tag +">" + selection + "</" + t[0] + ">";
     }
     else
-        return "<" + tag +">" + selection + "</" + tag + ">";
+         return "<" + tag +">" + selection + "</" + tag + ">";
+
+    // if(tag.includes("=\"") == true)
+    // {
+    //     const t = tag.split(" ", 1);
+    //     return "<" + tag +">" + selection + "</" + t[0] + ">";
+    // }
+    // else
+    //     return "<" + tag +">" + selection + "</" + tag + ">";
 }
