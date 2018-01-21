@@ -8,13 +8,15 @@ export async function insertTag() {
         return;
 
     let selection = vscode.window.activeTextEditor.selection;
-    let document_lang = vscode.window.activeTextEditor.document.languageId;
+    const document_lang = vscode.window.activeTextEditor.document.languageId;
 
     if(!selection.isEmpty && (document_lang  == "html" || document_lang == "xml")) {
         vscode.window.activeTextEditor.edit(builder => {
             builder.replace(selection, getInsertText(vscode.window.activeTextEditor.document.getText(selection), tag));
         });
     }
+    else
+        vscode.window.showErrorMessage("Your selection is empty or you're trying to run command in non html file.");
 };
 
 // Need more secure here. We can easily crack this.
