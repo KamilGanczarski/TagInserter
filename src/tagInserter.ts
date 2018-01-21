@@ -1,3 +1,5 @@
+// Tag-inserter/extension.ts
+// Author: Szymon 'l7ssha' Uglis
 import * as vscode from 'vscode';
 
 export async function insertTag() {
@@ -6,14 +8,16 @@ export async function insertTag() {
         return;
 
     let selection = vscode.window.activeTextEditor.selection;
+    let document_lang = vscode.window.activeTextEditor.document.languageId;
 
-    if(!selection.isEmpty) {
+    if(!selection.isEmpty && (document_lang  == "html" || document_lang == "xml")) {
         vscode.window.activeTextEditor.edit(builder => {
             builder.replace(selection, getInsertText(vscode.window.activeTextEditor.document.getText(selection), tag));
         });
     }
 };
 
+// Need more secure here. We can easily crack this.
 export function getInsertText(selection: string, tag: string) {
     if(tag.includes("=\"") == true)
     {
