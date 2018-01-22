@@ -5,14 +5,12 @@ import * as vscode from 'vscode';
 export async function insertTag() {
     const document_lang = vscode.window.activeTextEditor.document.languageId;
     if (document_lang  != "html")
-    {
-        vscode.window.showErrorMessage("The file must be html file.");
-        return;
-    }
+        error("The file must be html file.");
 
     const tag = await vscode.window.showInputBox();
+
     if(tag == null && tag.trim() != "")
-        return;
+        error("No empty tags permited!");
 
     let selection = vscode.window.activeTextEditor.selection;
 
@@ -21,6 +19,8 @@ export async function insertTag() {
             builder.replace(selection, getInsertText(vscode.window.activeTextEditor.document.getText(selection), tag));
         });
     }
+    else
+        error("Your selection is empty!");
 };
 
 // Some regex stuff.
@@ -34,12 +34,9 @@ export function getInsertText(selection: string, tag: string) {
     }
     else
          return "<" + tag +">" + selection + "</" + tag + ">";
+}
 
-    // if(tag.includes("=\"") == true)
-    // {
-    //     const t = tag.split(" ", 1);
-    //     return "<" + tag +">" + selection + "</" + t[0] + ">";
-    // }
-    // else
-    //     return "<" + tag +">" + selection + "</" + tag + ">";
+function error(text: string){
+    vscode.window.showErrorMessage(text);
+    return;
 }
