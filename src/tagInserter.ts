@@ -16,7 +16,6 @@ export async function insertTag() {
         return;
     }
 
-
     let selection = vscode.window.activeTextEditor.selection;
 
     if(!selection.isEmpty) {
