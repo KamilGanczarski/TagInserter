@@ -2,7 +2,7 @@
     "name": "tag-inserter",
     "displayName": "Tag Inserter",
     "description": "Insert HTML tag within text in line or selection",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "publisher": "l7ssha",
     "author": {
         "name": "l7ssha"
@@ -34,8 +34,8 @@
         "keybindings": [
             {
                 "command": "l7ssha.insertTag",
-                "key": "alt+shift+a",
-                "mac": "cmd+ctrl+a"
+                "key": "alt+shift+i",
+                "mac": "cmd+ctrl+i"
             }
         ]
     },
@@ -55,7 +55,7 @@
     "license": "SEE LICENSE IN LICENSE.txt",
     "bugs": {
         "url": "https://github.com/l7ssha/TagInserter/issues",
-        "email": "szymon.uglis@hotmaik.com"
+        "email": "szymon.uglis@hotmail.com"
     },
     "repository": {
         "type": "git",
